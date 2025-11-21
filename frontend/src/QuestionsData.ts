@@ -64,6 +64,6 @@ const wait = (timeout: number): Promise<void> => {
 };
 
 export const getUnAnsweredQuestions = async (): Promise<QuestionData[]> => {
-  await wait(500);
+  await wait(5000);
   return questions.filter((i) => i.answers.length === 0);
 };
