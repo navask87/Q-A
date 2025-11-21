@@ -1,3 +1,6 @@
+import { rejects } from 'assert';
+import { resolve } from 'path';
+
 export interface QuestionData {
   questionId: number;
   title: string;
@@ -54,6 +57,13 @@ const questions: QuestionData[] = [
   },
 ];
 
-export const getUnAnsweredQuestions = (): QuestionData[] => {
+const wait = (timeout: number): Promise<void> => {
+  return new Promise((resolve) => {
+    setTimeout(resolve, timeout);
+  });
+};
+
+export const getUnAnsweredQuestions = async (): Promise<QuestionData[]> => {
+  await wait(500);
   return questions.filter((i) => i.answers.length === 0);
 };
